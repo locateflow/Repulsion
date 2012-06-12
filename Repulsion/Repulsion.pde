@@ -29,9 +29,10 @@ text(b1.v_ang, 200, 500);
   b1.move();
   b2.move();
   b3.move();
-  b1.repel(b2); b1.repel(b3);
-  b2.repel(b3); b2.repel(b1);
-  b3.repel(b2); b3.repel(b1);
+  b1.repel(b2); b2.repel(b3); b3.repel(b1);
+  b3.repel(b2); b2.repel(b1); b1.repel(b3);
+//  b2.repel(b3); b3.repel(b2);
+//  b1.repel(b3); b3.repel(b1);
 
 }
   
@@ -45,9 +46,9 @@ class Ball {
 
   Ball(float xin, float yin, Ball oin, String namein){
 //pos = new PVector(xin, yin);
-ang = random(0,2*PI);
+ang = random(PI,2*PI);
 //v = new PVector(random(-10,10), random(-10,10));
-v_ang = random(-PI/32,PI/32);
+v_ang = random(PI,PI/32);
 //a = new PVector(0, 0);
 a_ang = 0;
 //F = new PVector(0, 0);
@@ -95,10 +96,10 @@ ellipse(150, 0, 20, 20);
   void repel(Ball oin) {
     if (mouseX>width/2){
 //v.add(new PVector((100/(-oin.pos.x + pos.x)) - v.x, (100/(-oin.pos.y + pos.y)) - v.y));
-v_ang = v_ang + (.05/(-oin.ang + ang) - v_ang);
+v_ang = (v_ang + (.05/((-oin.ang + ang)) - v_ang))%2*PI;
     }else{
 //v.add(new PVector(((+oin.pos.x - pos.x)/25) - v.x, ((oin.pos.y - pos.y)/25) - v.y));
-v_ang = v_ang + ((oin.ang - ang)/25 - v_ang);
+v_ang = v_ang + ((oin.ang - ang)%2*PI/25 - v_ang);
 
     }
   }
