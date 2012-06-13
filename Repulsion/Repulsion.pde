@@ -24,7 +24,7 @@ void draw() {
 text("b1 angle: "+b1.ang/PI, 100, 100);
 text("b2 angle: "+b2.ang/PI, 100, 200);
 //text(b1.v.x, 200, 500);
-text(b1.v_ang, 200, 500);
+text("b1 vel:"+b1.v_ang, 200, 500);
  
   b1.move();
   b2.move();
@@ -96,10 +96,10 @@ ellipse(150, 0, 20, 20);
   void repel(Ball oin) {
     if (mouseX>width/2){
 //v.add(new PVector((100/(-oin.pos.x + pos.x)) - v.x, (100/(-oin.pos.y + pos.y)) - v.y));
-v_ang = (v_ang + (.05/((-oin.ang + ang)) - v_ang))%2*PI;
+v_ang = (v_ang + (.05/abs((-oin.ang + ang)) - v_ang))%2*PI;
     }else{
 //v.add(new PVector(((+oin.pos.x - pos.x)/25) - v.x, ((oin.pos.y - pos.y)/25) - v.y));
-v_ang = v_ang + ((oin.ang - ang)%2*PI/25 - v_ang);
+v_ang = v_ang + (abs(oin.ang - ang)%2*PI/25 - v_ang);
 
     }
   }
