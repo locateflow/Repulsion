@@ -6,7 +6,7 @@ void setup(){
   size(sz, sz);
   b1 = new Ball(random(height), random(width), b2, "b1");
   b2 = new Ball(random(height), random(width), b1, "b2");
-  b3 = new Ball(random(height), random(width), b1, "b3");
+//  b3 = new Ball(random(height), random(width), b3, "b3");
   frameRate(30);
 }
 
@@ -17,7 +17,7 @@ void draw() {
   
   b1.display();
   b2.display();
-  b3.display();
+//  b3.display();
 
 
 //text(b1.pos.x, 100, 100);
@@ -28,9 +28,13 @@ text("b1 vel:"+b1.v_ang, 200, 500);
  
   b1.move();
   b2.move();
-  b3.move();
-  b1.repel(b2); b2.repel(b3); b3.repel(b1);
-  b3.repel(b2); b2.repel(b1); b1.repel(b3);
+//  b3.move();
+  b1.repel(b2); 
+//  b2.repel(b3); 
+//  b3.repel(b1);
+//  b3.repel(b2); 
+//  b2.repel(b1); 
+//  b1.repel(b3);
 //  b2.repel(b3); b3.repel(b2);
 //  b1.repel(b3); b3.repel(b1);
 
@@ -94,12 +98,13 @@ ellipse(150, 0, 20, 20);
  ///   
   }
   void repel(Ball oin) {
+    oin.v_ang = 0; 
     if (mouseX>width/2){
 //v.add(new PVector((100/(-oin.pos.x + pos.x)) - v.x, (100/(-oin.pos.y + pos.y)) - v.y));
-v_ang = (v_ang + (.05/abs((-oin.ang + ang)) - v_ang))%2*PI;
+v_ang = (v_ang + (.05/((-oin.ang + ang)) - v_ang))%2*PI;
     }else{
 //v.add(new PVector(((+oin.pos.x - pos.x)/25) - v.x, ((oin.pos.y - pos.y)/25) - v.y));
-v_ang = v_ang + (abs(oin.ang - ang)%2*PI/25 - v_ang);
+v_ang = v_ang + ((oin.ang - ang)%2*PI/25 - v_ang);
 
     }
   }
