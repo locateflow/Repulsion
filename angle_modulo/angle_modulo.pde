@@ -51,6 +51,7 @@ class Ball {
   
   void display(){    
       ellipse(100, 0, 15, 15);
+      text(
   }
   
   void allFunctions(){
@@ -62,7 +63,7 @@ class Ball {
     if (mouseX>width/2){
 v_ang = (v_ang + (.05/((-oin.ang + ang)) - v_ang));
     }else{
-v_ang = v_ang + ((oin.ang - ang)%2*PI/25 - v_ang);
+v_ang = v_ang + ((oin.ang - ang)/25 - v_ang);
 
     }
   }  

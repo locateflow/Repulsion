@@ -67,8 +67,16 @@ F_ang = 0;
 //   if((pos.x>=sz-50)||(pos.x<=0)){v.x = -v.x;}
 //   if((pos.y>=sz-50)||(pos.y<=0)){v.y = -v.y;}
 //   pos.add(v);
-ang = (ang + v_ang)%(2*PI);
+//ang = (ang + v_ang)%(2*PI);
 //   F.x = 0.5*sq(v.x);    F.y = 0.5*sq(v.y);
+
+
+  ang = (ang + v_ang)%(2*PI);
+  if(ang < 0){
+  ang = 2*PI - ang;
+  }
+
+
 F_ang = 0.5*sq(v_ang);
 //   v.x = v.x + v.x*a.x;
 v_ang = v_ang + v_ang * a_ang;
@@ -98,7 +106,7 @@ ellipse(150, 0, 20, 20);
  ///   
   }
   void repel(Ball oin) {
-    oin.v_ang = 0; 
+//    oin.v_ang = 0; 
     if (mouseX>width/2){
 //v.add(new PVector((100/(-oin.pos.x + pos.x)) - v.x, (100/(-oin.pos.y + pos.y)) - v.y));
 v_ang = (v_ang + (.05/((-oin.ang + ang)) - v_ang))%2*PI;
