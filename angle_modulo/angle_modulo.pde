@@ -15,9 +15,7 @@ void draw(){
   ellipse(0, 0, 10, 10);
   
   v_ang = PI/2*(sz/2-mouseY)/(sz/2);
-//  if(ang >= 0){
   ang = (ang + v_ang)%(2*PI);
-//  }
   if(ang < 0){
   ang = 2*PI + ang;
   }
